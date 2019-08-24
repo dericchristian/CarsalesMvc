@@ -16,6 +16,8 @@ namespace CarSales
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            DataSource.Data.Initialize();
         }
     }
 }

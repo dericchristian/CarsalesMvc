@@ -1,0 +1,30 @@
+﻿@using CarSales.Models
+@model List<VehicleType>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Vehicles</h2>
+
+<div class="row">
+    <div class="pull-left">
+        <label for="ddlVehicleType">What do you want to do?</label>
+        @Html.DropDownList("ddlVehicleType",
+            Model.OrderBy(i => i.Name).Select(i => new SelectListItem() { Text = $"Create {i.Name}", Value = i.Id.ToString() }), "")
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function onChangeVehicleType(selected) {
+            if (selected.target.value && selected.target.value !== "") {
+                var vehicleType = selected.target.value;
+                window.location.href = "@Url.Action("Add", "Vehicles", new { type = "__vehicleType__" })".replace("__vehicleType__", vehicleType);
+            }
+        }
+
+        $(document).ready(function () {
+            $("#ddlVehicleType").on("change", onChangeVehicleType);
+        });
+    </script>
+}
