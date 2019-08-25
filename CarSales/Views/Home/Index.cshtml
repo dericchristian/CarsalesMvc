@@ -19,7 +19,7 @@
         function onChangeVehicleType(selected) {
             if (selected.target.value && selected.target.value !== "") {
                 var vehicleType = selected.target.value;
-                window.location.href = "@Url.Action("Add", "Vehicles", new { type = "__vehicleType__" })".replace("__vehicleType__", vehicleType);
+                window.location.href = "@Url.Action("AddVehicle", "Home", new { typeId = "__vehicleType__" })".replace("__vehicleType__", vehicleType);
             }
         }
 

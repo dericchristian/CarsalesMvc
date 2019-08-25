@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Add Car";
+}
+
+<h2>Add Car</h2>
+
+<form id="frmAddCar">
+    <div class="form-row">
+        <div class="form-group col">
+            @Html.Label("Make")
+            @Html.TextBox("Make", null, new { @class = "form-control" })
+        </div>
+        <div class="form-group col">
+            @Html.Label("Model")
+            @Html.TextBox("Model", null, new { @class = "form-control" })
+        </div>
+        <div class="form-group col">
+            @Html.Label("Engine")
+            @Html.TextBox("Engine", null, new { @class = "form-control" })
+        </div>
+        <div class="form-group col">
+            @Html.Label("Doors")
+            @Html.TextBox("Doors", null, new { @class = "form-control", type = "number", min = 0, max = 4 })
+        </div>
+        <div class="form-group col">
+            @Html.Label("Wheels")
+            @Html.TextBox("Wheels", null, new { @class = "form-control", type = "number", min = 2, max = 4 })
+        </div>
+        <div class="form-group col">
+            @Html.Label("BodyTypeId", "Body Type")
+            @Html.DropDownList("BodyTypeId", new List<SelectListItem>() { new SelectListItem() { Text = "", Value = null } }, new { @class = "form-control" })
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="addCar()">Submit</button>
+</form>
+
+@section scripts {
+    <script>
+        function addCar() {
+            $.ajax({
+                url: "@Url.Action("Add", "Cars")",
+                data: $('#frmAddCar').serialize(),
+                type: 'POST',
+                success: function (result) {
+                    if (result && result.success) {
+                        $('.alert-success').removeClass('hide').show();
+                        $('#frmAddCar').trigger("reset");
+                    }
+                    else {
+                        $('.alert-danger').removeClass('hide').show();
+                    }
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $.getJSON("@Url.Action("GetBodyTypesJson", "Home")", function (data) {
+                if (data && data.length > 0) {
+                    $.each(data, function (i, e) {
+                        $('#BodyTypeId').append("<option value='" + e.Id +"'>"+ e.Name +"</option>");
+                    });
+                }
+            });
+        });
+    </script>
+}

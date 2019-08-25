@@ -16,7 +16,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Carsales", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -26,6 +26,18 @@
     </div>
 
     <div class="container body-content">
+        <div class="alert alert-success hide">
+            Data saved successfully.
+            <button type="button" class="close" aria-label="Close" onclick="closeAlert(this)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="alert alert-danger hide">
+            Error saving data.
+            <button type="button" class="close" aria-label="Close" onclick="closeAlert(this)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         @RenderBody()
         <hr />
         <footer>
@@ -41,6 +53,9 @@
         }
         function hideLoader() {
             $('.body-content').removeClass("loader");
+        }
+        function closeAlert(e) {
+            $(e).parent().hide();
         }
     </script>
     @RenderSection("scripts", required: false)

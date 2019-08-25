@@ -32,5 +32,11 @@ namespace CarSales.DataSource
             var data = Data.VehicleTypes.FirstOrDefault(i => i.Id == id);
             return data;
         }
+
+        public VehicleType GetByName(string name)
+        {
+            var data = Data.VehicleTypes.FirstOrDefault(i => i.Name == name);
+            return data;
+        }
     }
 }

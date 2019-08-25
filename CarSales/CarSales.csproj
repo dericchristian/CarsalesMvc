@@ -148,11 +148,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CarsController.cs" />
+    <Compile Include="DataSource\CarDataSource.cs" />
     <Compile Include="DataSource\Data.cs" />
     <Compile Include="DataSource\VehicleTypeDataSource.cs" />
+    <Compile Include="DataSource\BodyTypeDataSource.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Models\BodyType.cs" />
     <Compile Include="Models\VehicleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -192,6 +198,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Cars\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
