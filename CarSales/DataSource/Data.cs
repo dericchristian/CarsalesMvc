@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace CarSales.DataSource
 {
+    /**
+     * This class mimics Database 
+     */
     public class Data
     {
         public static List<VehicleType> VehicleTypes { get; set; }

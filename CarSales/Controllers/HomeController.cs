@@ -27,7 +27,7 @@ namespace CarSales.Controllers
         public ActionResult AddVehicle(int typeId)
         {
             var vehicleType = _vehicleTypeDataSource.GetById(typeId);
-            if (vehicleType.Name == "Car")
+            if (vehicleType != null && vehicleType.Name == "Car")
             {
                 return RedirectToAction("Add", "Cars");
             }
